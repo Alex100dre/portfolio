@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'react-grid-system'
 import * as firebase from 'firebase'
-import { PoseGroup } from 'react-pose'
 import Grid from '../../../../components/commons/Grid'
 import ProjectCard from './ProjectCard'
 import Section, { SectionTitle, SectionLoader } from '../../../../components/commons/Section'
@@ -34,8 +33,8 @@ export default class Projects extends Component {
   render() {
     const { projects, loading } = this.state
 
-    const projectsDOM = projects.map(project => (
-      <ProjectCard key={project.name} project={project} />
+    const projectsDOM = projects.map((project, index) => (
+      <ProjectCard key={project.name} project={project} index={index} />
     ))
 
     return (
@@ -45,10 +44,11 @@ export default class Projects extends Component {
         {loading && (<SectionLoader size={80} />)}
 
         <div>
-          <Grid cols={{ xs: 1, sm: 2, md: 4, lg: 4, }}>
-            <PoseGroup>
-              {!loading && [projectsDOM]}
-            </PoseGroup>
+          <Grid cols={{
+            xs: 1, sm: 2, md: 4, lg: 4,
+          }}
+          >
+            {!loading && [projectsDOM]}
           </Grid>
         </div>
       </Section>
