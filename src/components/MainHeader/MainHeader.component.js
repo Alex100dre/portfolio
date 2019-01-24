@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
 import { Container } from 'react-grid-system'
-import { Header, Title, LSDText, LSDShadow, LSDTextContainer } from './MainHeader.style'
+import {
+  Header, Title, LSDText, LSDShadow, LSDTextContainer,
+} from './MainHeader.style'
 import YoutubeVideoBg from '../commons/YoutubeVideoBg'
 
 

@@ -6,7 +6,7 @@ import * as firebase from 'firebase'
 // import './App.css';
 import routes from './constants/routes'
 import Home from './views/Home'
-import MainHeaderNav from './components/MainNav/MainNav.component'
+import MainHeaderNav from './components/MainNav'
 import config from './config'
 
 

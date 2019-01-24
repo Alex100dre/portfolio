@@ -1,10 +1,8 @@
-import React from 'react';
-import { Dvdr } from "./Divider.style";
+import React from 'react'
+import { Dvdr } from './Divider.style'
 
-const Divider = () => {
-  return (
-    <Dvdr />
-  )
-};
+const Divider = () => (
+  <Dvdr />
+)
 
-export default Divider;
+export default Divider

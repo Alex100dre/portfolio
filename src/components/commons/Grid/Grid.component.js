@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grd } from './Grid.style'
 
-const Grid = ({cols, children }) => <Grd cols={cols}>{ children }</Grd>
+const Grid = ({ cols, children }) => <Grd cols={cols}>{ children }</Grd>
 
 export default Grid
 

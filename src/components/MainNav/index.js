@@ -1,1 +1,1 @@
-export {default} from './MainNav.component';
+export { default } from './MainNav.component'

@@ -5,7 +5,8 @@ import MainHeader from '../../components/MainHeader'
 // import Button from '../../components/commons/Button'
 import Projects from './Blocks/Projects'
 import About from './Blocks/About'
-import MainFooter from '../../components/MainFooter/MainFooter.component'
+import MainFooter from '../../components/MainFooter'
+import EasterEgg from './Blocks/EasterEgg'
 // import Divider from '../../components/commons/Divider/Divider.component'
 
 export default class Home extends Component {
@@ -21,8 +22,8 @@ export default class Home extends Component {
 
           <About />
           <Projects />
-
         </Container>
+        <EasterEgg />
         <MainFooter />
       </div>
     )

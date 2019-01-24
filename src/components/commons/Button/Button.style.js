@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Btn = styled.button`
   display: inline-flex;
@@ -46,4 +46,4 @@ export const Btn = styled.button`
     transition: background .15s ease;
     background: linear-gradient(65deg, #3217BB 0, #4121E4 100%);
   }
-`;
+`

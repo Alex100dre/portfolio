@@ -25,10 +25,8 @@ Section.defaultProps = {
 
 export default Section
 
-export const SectionLoader = (props) => {
-  return (
-    <SectionLoaderContainer>
-      <MDSpinner {...props} />
-    </SectionLoaderContainer>
-  )
-}
+export const SectionLoader = props => (
+  <SectionLoaderContainer>
+    <MDSpinner {...props} />
+  </SectionLoaderContainer>
+)

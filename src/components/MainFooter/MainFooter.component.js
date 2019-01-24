@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Container } from 'react-grid-system'
 
 import routes from '../../constants/routes'
 import { Footer, PreFooter, SubFooter } from './MainFooter.style'
+import Button from '../commons/Button/Button.component'
 
 
 export default class MainFooter extends Component {
+  eEggClick = () => {
+    this.props.enableEasterEgg()
+  }
+
   render() {
     return (
       <div>
@@ -19,7 +24,10 @@ export default class MainFooter extends Component {
           </PreFooter>
           <SubFooter>
             <Container>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consectetur ducimus, ea eligendi expedita fuga impedit necessitatibus nemo officia perspiciatis porro praesentium quidem quis repellendus sequi, sint sit veritatis voluptates?
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consectetur ducimus, ea eligendi expedita fuga impedit necessitatibus nemo officia perspiciatis porro praesentium quidem quis repellendus sequi, sint sit veritatis voluptates?</p>
+              <Button types={['primary', 'shadow']} onClick={this.eEggClick}>
+                <span role="img" aria-label="emoji chut">🤫</span>Ne clique pas<span role="img" aria-label="emoji mensonge">&nbsp;🤥</span>
+              </Button>
             </Container>
           </SubFooter>
         </Footer>
@@ -28,12 +36,6 @@ export default class MainFooter extends Component {
   }
 }
 
-// MainNav.propTypes = {
-//   types: PropTypes.arrayOf(PropTypes.string),
-//   onClick: PropTypes.func,
-// };
-//
-// MainNav.defaultProps = {
-//   types: ['primary'],
-//   onClick: () => {console.warn('You need to provide an onClick function to this button')},
-// };
+MainFooter.propTypes = {
+  enableEasterEgg: PropTypes.func.isRequired,
+}

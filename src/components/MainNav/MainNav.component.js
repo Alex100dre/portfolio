@@ -7,7 +7,7 @@ import routes from '../../constants/routes'
 import {
   Nav, NavContent, LinksContainer, NavLink, LogoContainer,
 } from './MainNav.style'
-
+import MainLogo from '../MainLogo'
 
 export default class MainNav extends Component {
   render() {
@@ -17,7 +17,9 @@ export default class MainNav extends Component {
           <Container lg>
             <NavContent>
               <LogoContainer>
-                <Link to={routes.home}>Logo</Link>
+                <Link to={routes.home}>
+                  <MainLogo width="25px" height="25px" />
+                </Link>
               </LogoContainer>
 
               <LinksContainer>

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Ppr } from './Paper.style'
 
-const Paper = ({overlapTop, children}) => {
+const Paper = ({ overlapTop, children }) => {
   const pprOverlapTop = overlapTop === true ? '-100px' : overlapTop
   return <Ppr overlapTop={pprOverlapTop}>{ children }</Ppr>
 }

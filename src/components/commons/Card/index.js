@@ -1,1 +1,3 @@
-export { Card, CardMedia, CardContent, CardTitle } from './Card.component'
+export {
+  Card, CardMedia, CardContent, CardTitle,
+} from './Card.component'
