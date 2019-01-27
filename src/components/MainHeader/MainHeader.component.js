@@ -11,7 +11,7 @@ export default class MainHeader extends Component {
   render() {
     return (
       <Header>
-        <YoutubeVideoBg videoId="PFt5f_RrUOM" playlist={['b1HgWo6TZNI', 'PFt5f_RrUOM']} />
+        <YoutubeVideoBg videoId="PFt5f_RrUOM" playlist={['b1HgWo6TZNI', 'PFt5f_RrUOM']} start="8" />
         <Container>
           <Title>
             <span>

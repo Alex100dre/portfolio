@@ -118,7 +118,9 @@ export default class YoutubeVideoBg extends Component {
 
 
   render() {
-    const { videoId, playlist, overlay } = this.props
+    const {
+      videoId, playlist, overlay, start,
+    } = this.props
     const {
       height, width, centerDelta, loading,
     } = this.state
@@ -131,6 +133,7 @@ export default class YoutubeVideoBg extends Component {
         playlist,
         showinfo: 0,
         controls: 0,
+        start,
       },
     }
 
@@ -156,10 +159,12 @@ export default class YoutubeVideoBg extends Component {
 YoutubeVideoBg.propTypes = {
   videoId: PropTypes.string.isRequired,
   playlist: PropTypes.arrayOf(PropTypes.string),
+  start: PropTypes.number,
   overlay: PropTypes.bool,
 }
 
 YoutubeVideoBg.defaultProps = {
   playlist: null,
+  start: 0,
   overlay: true,
 }
