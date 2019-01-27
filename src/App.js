@@ -6,6 +6,7 @@ import * as firebase from 'firebase'
 // import './App.css';
 import routes from './constants/routes'
 import Home from './views/Home'
+import Project from './views/Project'
 import MainHeaderNav from './components/MainNav'
 import config from './config'
 
@@ -25,6 +26,7 @@ class App extends Component {
         <div className="App">
           <MainHeaderNav />
           <Route exact path={routes.home} component={Home} />
+          <Route exact path={routes.project} component={Project} />
 
           {/* <header className="App-header"> */}
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
