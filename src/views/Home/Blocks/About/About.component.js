@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'react-grid-system'
 import Fade from 'react-reveal/Fade'
 import Paper from '../../../../components/commons/Paper'
 import { Content, PortraitImage } from './About.style'

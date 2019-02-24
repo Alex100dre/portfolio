@@ -1,9 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { Btn } from './Button.style'
+import { Btn, BtnLink } from './Button.style'
 
-const Button = ({ types, onClick, children }) => {
+const Button = ({
+  types, onClick, href, children,
+}) => {
   const classes = types.join(' ')
+
+  if (href) {
+    return (
+      <BtnLink href={href} className={classes}>
+        {children}
+      </BtnLink>
+    )
+  }
+
   return (
     <Btn onClick={onClick} className={classes}>
       {children}
@@ -14,10 +25,14 @@ const Button = ({ types, onClick, children }) => {
 Button.propTypes = {
   types: PropTypes.arrayOf(PropTypes.string),
   onClick: PropTypes.func,
+  href: PropTypes.string,
+  children: PropTypes.node,
 }
 
 Button.defaultProps = {
   types: ['primary'],
+  href: null,
+  children: null,
   onClick: () => { console.warn('You need to provide an onClick function to this button') },
 }
 

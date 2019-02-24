@@ -7,8 +7,9 @@ import * as firebase from 'firebase'
 import routes from './constants/routes'
 import Home from './views/Home'
 import Project from './views/Project'
-import MainHeaderNav from './components/MainNav'
+import MainNav from './components/MainNav'
 import config from './config'
+import { MainContent } from './App.style'
 
 
 class App extends Component {
@@ -24,24 +25,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <MainHeaderNav />
-          <Route exact path={routes.home} component={Home} />
-          <Route exact path={routes.project} component={Project} />
-
-          {/* <header className="App-header"> */}
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          {/* <p> */}
-          {/* Edit <code>src/App.js</code> and save to reload. */}
-          {/* </p> */}
-          {/* <a */}
-          {/* className="App-link" */}
-          {/* href="https://reactjs.org" */}
-          {/* target="_blank" */}
-          {/* rel="noopener noreferrer" */}
-          {/* > */}
-          {/* Learn React */}
-          {/* </a> */}
-          {/* </header> */}
+          <MainNav />
+          <MainContent>
+            <Route exact path={routes.home} component={Home} />
+            <Route exact path={routes.project} component={Project} />
+          </MainContent>
         </div>
       </BrowserRouter>
     )
