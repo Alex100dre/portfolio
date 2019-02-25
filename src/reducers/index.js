@@ -3,6 +3,7 @@
 // const appReducer = combineReducers
 
 const initialState = {
+  splashScreenSeen: false,
   easterEggActive: false,
 }
 
@@ -19,6 +20,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         easterEggActive: false,
+      }
+    case 'SPLASH_SCREEN_SEEN':
+      return {
+        ...state,
+        splashScreenSeen: true,
       }
   }
   return state
