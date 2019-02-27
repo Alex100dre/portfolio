@@ -4,10 +4,10 @@ import Dotdotdot from 'react-dotdotdot'
 import Fade from 'react-reveal/Fade'
 
 import {
-  Card, CardMedia, CardContent, CardTitle,
+  CardMedia, CardContent, CardTitle,
 } from '../../../../../components/commons/Card'
 
-import { PrjLink } from './ProjectCard.style'
+import { PrjCard, PrjLink } from './ProjectCard.style'
 
 export default class ProjectCard extends Component {
   render() {
@@ -16,7 +16,7 @@ export default class ProjectCard extends Component {
 
     return (
       <Fade bottom delay={delay} distance="30px">
-        <Card>
+        <PrjCard>
           <PrjLink to={`/project/${index}/${encodeURIComponent(project.name)}`}>
             <CardMedia image={project.thumbnail} title={project.name} />
             <CardContent>
@@ -27,7 +27,7 @@ export default class ProjectCard extends Component {
               </Dotdotdot>
             </CardContent>
           </PrjLink>
-        </Card>
+        </PrjCard>
       </Fade>
     )
   }

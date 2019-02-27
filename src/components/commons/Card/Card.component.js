@@ -4,7 +4,9 @@ import {
   Crd, CrdMedia, CrdContent, CrdTitle,
 } from './Card.style'
 
-export const Card = React.forwardRef(({ children }, ref) => <Crd ref={ref}>{ children }</Crd>)
+export const Card = React.forwardRef(({ children, ...others }, ref) => (
+  <Crd ref={ref} {...others}>{ children }</Crd>
+))
 
 Card.propTypes = {
   children: PropTypes.oneOfType([
