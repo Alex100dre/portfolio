@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Row } from 'react-grid-system'
 import * as firebase from 'firebase'
 import Grid from '../../../../components/commons/Grid'
 import ProjectCard from './ProjectCard'
