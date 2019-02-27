@@ -48,7 +48,11 @@ export default class Project extends Component {
 
     return (
       <div>
-        <Header bgImage={project.thumbnail} blur />
+        <Header bgImage={project.thumbnail} blur>
+          <Container>
+            <Button onClick={props.history.goBack}>← Retour</Button>
+          </Container>
+        </Header>
         <Container>
           <Fade bottom distance="100px">
             <Section data-prjid={project.id}>
@@ -84,6 +88,7 @@ export default class Project extends Component {
 }
 
 Project.propTypes = {
+  history: PropTypes.shape({ goBack: PropTypes.func }),
   project: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
