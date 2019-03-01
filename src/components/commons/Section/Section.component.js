@@ -4,15 +4,16 @@ import MDSpinner from 'react-md-spinner'
 import { Sctn, SectionLoaderContainer } from './Section.style'
 
 const Section = (props) => {
-  const { children } = props
+  const { children, bgImage } = props
   return (
-    <Sctn {...props}>
+    <Sctn {...props} bgImage={bgImage}>
       {children}
     </Sctn>
   )
 }
 
 Section.propTypes = {
+  bgImage: PropTypes.any,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

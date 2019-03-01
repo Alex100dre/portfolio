@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Sctn = styled.section`
   padding: ${props => (props.noPadding ? '0' : '20px 0')};
+  background: ${({ bgImage }) => (bgImage ? `url(${bgImage})` : 'none')} no-repeat center;
 `
 
 export const SectionTitle = styled.h2`
