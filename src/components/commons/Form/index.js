@@ -9,3 +9,5 @@ export {
 export {
   Textarea,
 } from './Textarea.component'
+
+export { Fieldset } from './Fieldset.component'
