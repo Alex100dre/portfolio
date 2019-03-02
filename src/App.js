@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import * as firebase from 'firebase'
+import { configureAnchors } from 'react-scrollable-anchor'
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -19,6 +20,10 @@ class App extends Component {
     if (!firebase.apps.length) {
       firebase.initializeApp(config)
     }
+  }
+
+  componentDidMount() {
+    configureAnchors({ offset: -130 })
   }
 
   render() {

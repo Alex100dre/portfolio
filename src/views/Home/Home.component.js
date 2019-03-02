@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ScrollableAnchor from 'react-scrollable-anchor'
 // import PropTypes from 'prop-types'
 import { Container } from 'react-grid-system'
 import MainHeader from '../../components/MainHeader'
@@ -17,10 +18,16 @@ export default class Home extends Component {
       <div>
         <MainHeader />
         <Container>
-          <About />
-          <Projects />
+          <ScrollableAnchor id="about">
+            <About />
+          </ScrollableAnchor>
+          <ScrollableAnchor id="projects">
+            <Projects />
+          </ScrollableAnchor>
         </Container>
-        <Contact />
+        <ScrollableAnchor id="contact">
+          <Contact />
+        </ScrollableAnchor>
         <EasterEgg />
         <MainFooter />
         <SplashScreen />

@@ -5,7 +5,7 @@ import { Container } from 'react-grid-system'
 
 import routes from '../../constants/routes'
 import {
-  Nav, NavContent, LinksContainer, NavLink, LogoContainer,
+  Nav, NavContent, LinksContainer, LogoContainer,
 } from './MainNav.style'
 import MainLogo from '../MainLogo'
 
@@ -23,9 +23,9 @@ export default class MainNav extends Component {
               </LogoContainer>
 
               <LinksContainer>
-                <NavLink to="#about">À propos</NavLink>
-                <NavLink to="#about">Projets</NavLink>
-                <NavLink to="#about">Contact</NavLink>
+                <a href="/#about">À propos</a>
+                <a href="/#projects">Projets</a>
+                <a href="/#contact">Contact</a>
               </LinksContainer>
             </NavContent>
           </Container>

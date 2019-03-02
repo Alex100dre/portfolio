@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Nav = styled.nav`
   position: fixed;
@@ -9,7 +8,6 @@ export const Nav = styled.nav`
   right: 0;
   background-color: #000;
   & a {
-    //color: #a7afc7;
     text-decoration: none;
     text-transform: uppercase;
   }
@@ -26,12 +24,10 @@ export const LogoContainer = styled.div`
   padding: 10px;
 `
 
-export const NavLink = styled(Link)``
-
 export const LinksContainer = styled.div`
   display: flex;
   
-  ${NavLink} {
+  & a {
     padding: 10px;
   } 
 `
