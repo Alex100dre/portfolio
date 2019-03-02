@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 // import Fade from 'react-reveal/Fade'
 import { Container } from 'react-grid-system'
 import Paper from '../../../../components/commons/Paper'
-import { Content, SubmitBtn } from './Contact.style'
-import Section, { SectionTitle } from '../../../../components/commons/Section'
+import { SectionStyled, Content, SubmitBtn } from './Contact.style'
+import { SectionTitle } from '../../../../components/commons/Section'
 import Background from '../../../../assets/images/home/bg_contact.png'
 import Grid from '../../../../components/commons/Grid'
 import {
@@ -14,7 +14,7 @@ import {
 export default class Contact extends Component {
   render() {
     return (
-      <Section bgImage={Background}>
+      <SectionStyled bgImage={Background}>
         <Container>
           <Paper>
             <SectionTitle>
@@ -41,7 +41,7 @@ export default class Contact extends Component {
             </Content>
           </Paper>
         </Container>
-      </Section>
+      </SectionStyled>
     )
   }
 }
