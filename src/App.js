@@ -11,6 +11,7 @@ import Project from './views/Project'
 import MainNav from './components/MainNav'
 import config from './config'
 import { MainContent } from './App.style'
+import MessagePanel from './components/commons/MessagePanel'
 
 
 class App extends Component {
@@ -34,6 +35,10 @@ class App extends Component {
           <MainContent>
             <Route exact path={routes.home} component={Home} />
             <Route exact path={routes.project} component={Project} />
+
+            <MessagePanel isOpen>
+              /!\ Site en construction.
+            </MessagePanel>
           </MainContent>
         </div>
       </BrowserRouter>
