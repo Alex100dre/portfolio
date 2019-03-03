@@ -27,8 +27,18 @@ export default class Contact extends Component {
                 }}
                 >
                   <Fieldset>
-                    <Input type="text" name="lastname" id="lastname" placeholder="Wayne" label="Nom" required />
-                    <Input type="text" name="firstname" id="firstname" placeholder="Bruce" label="Prénom" required />
+                    <Grid cols={{
+                      xs: 1, sm: 1, md: 2, lg: 2,
+                    }}
+                    >
+                      <div>
+                        <Input type="text" name="lastname" id="lastname" placeholder="Wayne" label="Nom" required />
+                      </div>
+                      <div>
+                        <Input type="text" name="firstname" id="firstname" placeholder="Bruce" label="Prénom" required />
+                      </div>
+                    </Grid>
+                    <Input type="email" name="email" id="email" placeholder="bruce.wayne@gotham-city.com" label="Email" required />
                     {/* TODO: FIX Button component by using props conditionnal styles instead of class */}
                     <SubmitBtn type="primary" className="primary">Envoyer</SubmitBtn>
                   </Fieldset>
