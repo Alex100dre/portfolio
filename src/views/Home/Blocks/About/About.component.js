@@ -47,37 +47,37 @@ export default class About extends Component {
               </p>
 
               <p>
-                Ayant grandit dans la fabuleuse époque des 90's et ayant connu les vestes fluo, le club Dorothée,
-                les jojos, les pogs, les walkmans, la game boy et jen passe.
+                Ayant grandi dans la fabuleuse époque des 90's et ayant connu les vestes fluo, le club Dorothée,
+                les jojos, les pogs, les walkmans, la game boy et j'en passe.
                 Mais ayant surtout connu la vie
                 {' '}
                 <abbr title="avant internet">ante-internet</abbr>
-, c'est après quelques années
-                d'études superieur que je me suis lancé dans le
+,
+                c'est après quelques années d'études supérieures que je me suis lancé dans le
                 {' '}
                 <strong>développement web</strong>
 .
               </p>
 
               <p>
-                En effet, je m'y découvre rapidement une vocation et en ai fait aujourd'hui mon metier.
+                En effet, je m'y découvre rapidement une vocation et en ai fait aujourd'hui mon métier.
               </p>
               <p>
-                Ayant appréhendé plusieurs langages (php, C# unity VR, etc...), je me concentre à présent sur
+                Ayant appréhendé plusieurs langages (PHP, C# Unity VR, etc...), je me concentre à présent sur
                 le
                 {' '}
-                <strong>javascript</strong>
+                <strong>Javascript</strong>
                 {' '}
 via la stack
                 {' '}
-                <strong>react/redux/node</strong>
+                <strong>React/Redux/Node</strong>
 ...
               </p>
 
               <p>
                 Fort de
                 {' '}
-                <strong>4 années d'experience</strong>
+                <strong>4 années d'expérience</strong>
                 {' '}
 en tant que
                 {' '}
@@ -104,20 +104,20 @@ alias
               </p>
 
               <p>
-                Je visionne d'ailleurs pas mal de vidéos sur youtube et des chaînes telles que celles d'e-penser, dirty-biology,
-                science étonnante ou encore pause process me divertissent ennormemment.
+                Je visionne d'ailleurs pas mal de vidéos sur YouTube et des chaînes telles que celles d'e-penser, dirty-biology,
+                science étonnante ou encore pause process me divertissent énormément.
               </p>
 
               <p>
-                Conernant le futur, c'est un exercice assez périlleux que d'essayer de se projeter dans l'avenir et il
+                Concernant le futur, c'est un exercice assez périlleux que d'essayer de se projeter dans l'avenir et il
                 n'est pas non plus des plus plaisant de s'imaginer vieillir.
               </p>
               <p>
-                En effet, je pourrais tout aussi bien rester à paris que partir vivre à l'autre bout du monde. Qui sait ?
+                En effet, je pourrais tout aussi bien rester à Paris que partir vivre à l'autre bout du monde. Qui sait ?
               </p>
               <p>
-                Une chose est sûre cependant, n'aimant pas spécialement le changement, il y a peu de chance que je me lance dans
-                une reconversion profesionnelle du jour au landemain.
+                Une chose est sûre cependant, n'aimant pas spécialement le changement, il y a peu de chances que je me lance dans
+                une reconversion profesionnelle du jour au lendemain.
               </p>
             </Content>
           </Paper>
