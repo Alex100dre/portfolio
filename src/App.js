@@ -37,7 +37,7 @@ class App extends Component {
             <Route exact path={routes.project} component={Project} />
 
             <MessagePanel isOpen>
-              /!\ Site en construction.
+              ⚠ Site en construction.
             </MessagePanel>
           </MainContent>
         </div>
