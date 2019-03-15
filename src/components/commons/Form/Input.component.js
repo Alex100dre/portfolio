@@ -5,27 +5,37 @@ import {
 } from './Form.style'
 
 export const Input = ({
-  name, placeholder, value, label, type, ...others
+  field, ...others
 }) => (
   <div>
-    {label && (
-      <LabelStyled htmlFor={name}>{label}</LabelStyled>
+    {field.label && (
+      <LabelStyled htmlFor={field.name}>{field.label}</LabelStyled>
     )}
-    <InputStyled type={type} name={name} placeholder={placeholder} value={value} {...others} />
+    <InputStyled
+      type={field.type}
+      name={field.name}
+      placeholder={field.placeholder}
+      value={field.value}
+      validation={field.validation}
+      {...others}
+    />
   </div>
 )
 
 Input.propTypes = {
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  label: PropTypes.string,
-  type: PropTypes.string,
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    value: PropTypes.string,
+    label: PropTypes.string,
+    isRequired: PropTypes.bool,
+    type: PropTypes.string,
+  }).isRequired,
 }
 
-Input.defaultProps = {
-  placeholder: null,
-  value: null,
-  label: null,
-  type: 'text',
-}
+// Input.defaultProps = {
+//   placeholder: null,
+//   value: '',
+//   label: null,
+//   type: 'text',
+// }

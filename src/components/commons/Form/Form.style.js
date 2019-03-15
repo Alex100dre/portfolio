@@ -20,6 +20,18 @@ export const InputStyled = styled.input`
   display: block;
   width: 100%;
   margin-bottom: 15px;
+  border-color: ${({ validation }) => {
+    let borderColor = '#0c0c0c'
+    if (validation && validation.isValid) {
+      borderColor = 'green'
+    } if (validation && !validation.isValid) {
+      borderColor = 'red'
+    }
+    console.log('style Validation ======>')
+    console.log(validation)
+    console.log(borderColor)
+    return borderColor
+  }};
 `
 
 export const TextareaStyled = styled.textarea`
