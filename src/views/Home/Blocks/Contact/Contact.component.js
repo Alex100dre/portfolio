@@ -8,18 +8,25 @@ import { SectionTitle } from '../../../../components/commons/Section'
 import Background from '../../../../assets/images/home/bg_contact.png'
 import Grid from '../../../../components/commons/Grid'
 import {
-  Form, Input, Textarea, Fieldset, Validator
+  Form, Input, Textarea, Fieldset, Validator, Field,
 } from '../../../../components/commons/Form'
+
+const FORM_STATUS = {
+  DEFAULT: 'FORM_STATUS_DEFAULT',
+  SENDING: 'FORM_STATUS_SENDING',
+  SENT: 'FORM_STATUS_SENT',
+}
 
 export default class Contact extends Component {
   validator = new Validator()
 
   state = {
     form: {
-      // Validator: new Validator(),
+      status: FORM_STATUS.DEFAULT,
       fields: {
         lastname: {
           name:'lastname',
+          id:'contactLastname',
           type:'text',
           placeholder:'Wayne',
           value: '',
@@ -29,6 +36,7 @@ export default class Contact extends Component {
         },
         firstname: {
           name:'firstname',
+          id:'contactFirstname',
           type:'text',
           placeholder:'John',
           value: '',
@@ -38,6 +46,7 @@ export default class Contact extends Component {
         },
         email: {
           name:'email',
+          id:'contactEmail',
           type:'email',
           placeholder:'john.wayne@gotham-city.com',
           value: '',
@@ -47,6 +56,7 @@ export default class Contact extends Component {
         },
         message: {
           name:'message',
+          id:'contactMessage',
           type:'textarea',
           placeholder:'I\'m Batman!',
           value: '',
@@ -56,10 +66,6 @@ export default class Contact extends Component {
         },
       }
     }
-  }
-
-  componentDidMount() {
-
   }
 
   handleChange = (e) => {
@@ -76,26 +82,26 @@ export default class Contact extends Component {
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(this.state)
+  setFormStatusSending = () => {
+    let form = {...this.state.form}
+    form.status = FORM_STATUS.SENDING;
+    this.setState({form})
   }
 
-  validateForm = () => {
-    // const {form, Validator} = this.state.form
+  setFormStatusSent = () => {
+    let form = {...this.state.form}
+    form.status = FORM_STATUS.SENT;
+    this.setState({form})
+  }
 
-
-
-    // for(let i in errors) {
-    //   const input = i;
-    //   const hasError = errors[i];
-    //
-    //
-    // }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.setFormStatusSending()
+    setTimeout(() => { this.setFormStatusSent() }, 3000);
   }
 
   render() {
-    const { fields } = this.state.form
+    const { fields, status } = this.state.form
     return (
       <SectionStyled bgImage={Background}>
         <Container>
@@ -115,37 +121,37 @@ export default class Contact extends Component {
                     }}
                     >
                       <div>
-                        <Input
-                          field={fields.lastname}
+                        <Field
+                          params={fields.lastname}
                           onChange={this.handleChange}
                         />
                       </div>
                       <div>
-                        <Input
-                          field={fields.firstname}
+                        <Field
+                          params={fields.firstname}
                           value={fields.firstname.value}
                           onChange={this.handleChange}
                         />
                       </div>
                     </Grid>
-                    <Input
-                      field={fields.email}
+                    <Field
+                      params={fields.email}
                       onChange={this.handleChange}
                     />
                     {/* TODO: FIX Button component by using props conditionnal styles instead of class */}
-                    <SubmitBtn type="primary" className="primary" onClick={this.handleSubmit}>Envoyer</SubmitBtn>
+                    <SubmitBtn type="primary" className="primary" onClick={this.handleSubmit} formStatus={status}>
+                      Envoyer
+                      <svg viewBox="0,0,20,20">
+                        <path d="M9,13 L20,0 L16,16 L9,13 Z M6,13 L0,10 L20,0 L6,13 Z M9,15 L13,16 L9,20 L9,15 Z" id="plane" fill="currentColor">
+                        </path>
+                      </svg>
+                    </SubmitBtn>
                   </Fieldset>
                   <Fieldset>
-                    <label htmlFor="message">Message</label>
-                    <Textarea
-                      name="message"
-                      id="message"
+                    <Field
                       cols="30"
                       rows="10"
-                      placeholder="I'm Batman!"
-                      required
-                      field={fields.message}
-                      value={fields.message.value}
+                      params={fields.message}
                       onChange={this.handleChange}
                     />
                   </Fieldset>

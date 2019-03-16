@@ -5,13 +5,10 @@ export {
 } from './Form.component'
 
 export {
-  Input,
-} from './Input.component'
-
-export {
   Textarea,
 } from './Textarea.component'
 
+export { Field } from './Field.component'
 export { Fieldset } from './Fieldset.component'
 
 export class Validator {
@@ -52,8 +49,11 @@ export class Validator {
 
   validateText = (field) => {
     const { currentValidation } = this
-    console.log('VALIDATE TEXT')
-    console.log(currentValidation)
+    return currentValidation
+  }
+
+  validateTextarea = (field) => {
+    const { currentValidation } = this
     return currentValidation
   }
 

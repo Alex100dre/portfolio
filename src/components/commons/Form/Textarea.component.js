@@ -6,21 +6,28 @@ import {
 } from './Form.style'
 
 export const Textarea = ({
-  name, placeholder, children, ...others
+  id, name, placeholder, children, validation, ...others
 }) => (
-  <TextareaStyled name={name} placeholder={placeholder} {...others}>{ children }</TextareaStyled>
+  <TextareaStyled id={id} name={name} placeholder={placeholder} validation={validation} {...others}>{ children }</TextareaStyled>
 )
 
 Textarea.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  validation: PropTypes.shape({
+    isValid: PropTypes.bool,
+    label: PropTypes.string,
+  }),
 }
 
 Textarea.defaultProps = {
+  id: null,
   placeholder: null,
   children: null,
+  validation: null,
 }
