@@ -1,5 +1,16 @@
 import styled from 'styled-components'
 
+const getValidationColor = (validation, rule) => {
+  let color = rule === 'outline' ? '#4D90FE' : '#0c0c0c'
+  if (validation && validation.isValid) {
+    color = 'green'
+  }
+  if (validation && !validation.isValid) {
+    color = 'red'
+  }
+  return color
+}
+
 export const FormStyled = styled.form`
 `
 
@@ -20,16 +31,8 @@ export const InputStyled = styled.input`
   display: block;
   width: 100%;
   margin-bottom: 15px;
-  border-color: ${({ validation }) => {
-    let borderColor = '#0c0c0c'
-    if (validation && validation.isValid) {
-      borderColor = 'green'
-    }
-    if (validation && !validation.isValid) {
-      borderColor = 'red'
-    }
-    return borderColor
-  }};
+  border-color: ${({ validation }) => getValidationColor(validation, 'border')};
+  outline-color: ${({ validation }) => getValidationColor(validation, 'outline')};
 `
 
 export const TextareaStyled = styled.textarea`
@@ -43,17 +46,8 @@ export const TextareaStyled = styled.textarea`
   display: block;
   width: 100%;
   margin-bottom: 15px;
-  
-  border-color: ${({ validation }) => {
-    let borderColor = '#0c0c0c'
-    if (validation && validation.isValid) {
-      borderColor = 'green'
-    }
-    if (validation && !validation.isValid) {
-      borderColor = 'red'
-    }
-    return borderColor
-  }};
+  border-color: ${({ validation }) => getValidationColor(validation, 'border')};
+  outline-color: ${({ validation }) => getValidationColor(validation, 'outline')};
 `
 
 export const LabelStyled = styled.label`

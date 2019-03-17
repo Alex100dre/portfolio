@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import MDSpinner from 'react-md-spinner'
 // import Fade from 'react-reveal/Fade'
 import { Container } from 'react-grid-system'
+import { FORM_STATUS } from './'
 import Paper from '../../../../components/commons/Paper'
-import { SectionStyled, Content, SubmitBtn } from './Contact.style'
+import { SectionStyled, Content, SubmitBtn, SendingLoader, SentIcon } from './Contact.style'
 import { SectionTitle } from '../../../../components/commons/Section'
 import Background from '../../../../assets/images/home/bg_contact.png'
 import Grid from '../../../../components/commons/Grid'
@@ -11,11 +13,12 @@ import {
   Form, Input, Textarea, Fieldset, Validator, Field,
 } from '../../../../components/commons/Form'
 
-const FORM_STATUS = {
-  DEFAULT: 'FORM_STATUS_DEFAULT',
-  SENDING: 'FORM_STATUS_SENDING',
-  SENT: 'FORM_STATUS_SENT',
-}
+const SendIcon = () => (
+  <svg viewBox="0,0,20,20">
+    <path d="M9,13 L20,0 L16,16 L9,13 Z M6,13 L0,10 L20,0 L6,13 Z M9,15 L13,16 L9,20 L9,15 Z" id="plane" fill="currentColor">
+    </path>
+  </svg>
+);
 
 export default class Contact extends Component {
   validator = new Validator()
@@ -38,7 +41,7 @@ export default class Contact extends Component {
           name:'firstname',
           id:'contactFirstname',
           type:'text',
-          placeholder:'John',
+          placeholder:'Bruce',
           value: '',
           isRequired: true,
           label: 'Prénom',
@@ -48,7 +51,7 @@ export default class Contact extends Component {
           name:'email',
           id:'contactEmail',
           type:'email',
-          placeholder:'john.wayne@gotham-city.com',
+          placeholder:'bruce.wayne@gotham-city.com',
           value: '',
           isRequired: true,
           label: 'Email',
@@ -102,6 +105,18 @@ export default class Contact extends Component {
 
   render() {
     const { fields, status } = this.state.form
+
+    let submitWording = (() => {
+      switch (status) {
+        case FORM_STATUS.DEFAULT:
+          return `Envoyer`
+        case FORM_STATUS.SENDING:
+          return `Envoi en cours`
+        case FORM_STATUS.SENT:
+          return 'Envoyé'
+      }
+    })()
+
     return (
       <SectionStyled bgImage={Background}>
         <Container>
@@ -140,11 +155,10 @@ export default class Contact extends Component {
                     />
                     {/* TODO: FIX Button component by using props conditionnal styles instead of class */}
                     <SubmitBtn type="primary" className="primary" onClick={this.handleSubmit} formStatus={status}>
-                      Envoyer
-                      <svg viewBox="0,0,20,20">
-                        <path d="M9,13 L20,0 L16,16 L9,13 Z M6,13 L0,10 L20,0 L6,13 Z M9,15 L13,16 L9,20 L9,15 Z" id="plane" fill="currentColor">
-                        </path>
-                      </svg>
+                      {submitWording}
+                      <SendIcon/>
+                      <SendingLoader active={status === FORM_STATUS.SENDING} singleColor="#fff" size={20} />
+                      <SentIcon active={status === FORM_STATUS.SENT} />
                     </SubmitBtn>
                   </Fieldset>
                   <Fieldset>
