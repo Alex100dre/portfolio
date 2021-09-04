@@ -26,6 +26,7 @@ export default class MainNav extends Component {
                 <a href="/#about">À propos</a>
                 <a href="/#projects">Projets</a>
                 <a href="/#contact">Contact</a>
+                <a href="https://cv.le-dev.com" target="_blank" rel="noopener noreferrer">CV</a>
               </LinksContainer>
             </NavContent>
           </Container>
