@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import animationData from '../../assets/animations/splash-screen'
-import { LogoAnimation, SplashScreenBg } from './SplashScreen.style'
+import {LogoAnimation, SkipButton, SplashScreenBg} from './SplashScreen.style'
 import {STATUS} from "./SplashScreen.contants";
 
 export default class SplashScreen extends Component {
@@ -22,6 +22,12 @@ export default class SplashScreen extends Component {
     const { setStatus } = this.props
     this.setState({ isActive: false })
     setStatus(STATUS.SEEN)
+  }
+
+  skip = () => {
+    const { setStatus } = this.props
+    this.setState({ isActive: false })
+    setStatus(STATUS.SKIP)
   }
 
   render() {
@@ -53,6 +59,7 @@ export default class SplashScreen extends Component {
               isPaused={isAnimPaused}
               eventListeners={eventListeners}
             />
+            <SkipButton onClick={this.skip}>Passer l'intro ▸</SkipButton>
           </SplashScreenBg>
         )}
       </div>

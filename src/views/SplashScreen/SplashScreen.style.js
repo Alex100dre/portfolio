@@ -25,3 +25,16 @@ export const LogoAnimation = styled(Lottie)`
   max-width: 800px;
   max-height: 800px;
 `
+
+export const SkipButton = styled.span`
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  cursor: pointer;
+  color: #ccc;
+  text-transform: uppercase;
+  font-size: 13px;
+  &:hover {
+    text-decoration: underline;
+  }
+`
