@@ -1,19 +1,18 @@
 import { connect } from 'react-redux'
 
 import EasterEgg from './EasterEgg.component'
+import { disable } from '../../../../store/easterEgg'
 
-const mapStateToProps = state => ({
-  active: state.easterEggActive,
+const mapStateToProps = ({ easterEgg }) => ({
+  active: easterEgg.active,
 })
 
-// const mapDispatchToProps = dispatch => ({
-//   reviewActions: {
-//     fetchCollaborator: igg => dispatch(fetchCollaborator(igg)),
-//     clear: () => dispatch(clear()),
-//   },
-// })
+const mapDispatchToProps = dispatch => ({
+  disable: () => {
+    dispatch(disable())
+  },
+})
 
-export default connect(mapStateToProps)(
-  // injectIntl(EasterEgg),
+export default connect(mapStateToProps, mapDispatchToProps)(
   EasterEgg,
 )

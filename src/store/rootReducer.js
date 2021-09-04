@@ -1,15 +1,12 @@
 import { combineReducers } from 'redux'
 import splashScreen from './splashScreen'
-
-const initialState = {
-  splashScreenSeen: false,
-  easterEggActive: false,
-}
+import easterEgg from './easterEgg'
 
 const appReducer = combineReducers({
   splashScreen,
+  easterEgg,
 })
 
-const rootReducer = (state = initialState, action) => appReducer(state, action)
+const rootReducer = (state, action) => appReducer(state, action)
 
 export default rootReducer

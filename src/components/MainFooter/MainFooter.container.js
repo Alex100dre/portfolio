@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 
+import { enable } from '../../store/easterEgg'
 import MainFooter from './MainFooter.component'
 
 // const mapStateToProps = state => ({
@@ -8,7 +9,7 @@ import MainFooter from './MainFooter.component'
 
 const mapDispatchToProps = dispatch => ({
   enableEasterEgg: () => {
-    dispatch({ type: 'EASTER_EGG_ENABLE' })
+    dispatch(enable())
   },
 })
 

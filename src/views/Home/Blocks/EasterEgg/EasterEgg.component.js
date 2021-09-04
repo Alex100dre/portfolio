@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import { Row, Col } from 'react-grid-system'
 // import Fade from 'react-reveal/Fade'
-import Terminal from 'terminal-in-react'
 import pseudoFileSystemPlugin from 'terminal-in-react-pseudo-file-system-plugin'
 import { Overlay, Bash } from './EasterEgg.style'
 
@@ -21,7 +20,7 @@ export default class EasterEgg extends Component {
   }
 
   render() {
-    const { active } = this.props
+    const { active, disable } = this.props
     const FileSystemPlugin = pseudoFileSystemPlugin()
     console.log(this.props)
     return (
@@ -31,6 +30,11 @@ export default class EasterEgg extends Component {
           <div>
             <Overlay>
               <Bash
+                actionHandlers={{
+                  handleClose: () => {
+                    disable()
+                  },
+                }}
                 plugins={[
                   FileSystemPlugin,
                 ]}
@@ -72,4 +76,11 @@ export default class EasterEgg extends Component {
       </div>
     )
   }
+}
+EasterEgg.propTypes = {
+  active: PropTypes.bool,
+  disable: PropTypes.func.isRequired,
+}
+EasterEgg.defaultProps = {
+  active: false,
 }
