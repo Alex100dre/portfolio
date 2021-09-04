@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
-
+import { setStatus } from '../../store/splashScreen'
 import SplashScreen from './SplashScreen.component'
 
-const mapStateToProps = state => ({
-  alreadySeen: state.splashScreenSeen,
+const mapStateToProps = ({ splashScreen }) => ({
+  status: splashScreen.status,
 })
 
 const mapDispatchToProps = dispatch => ({
-  setSplashScreenSeen: () => {
-    dispatch({ type: 'SPLASH_SCREEN_SEEN' })
+  setStatus: (status) => {
+    dispatch(setStatus(status))
   },
 })
 

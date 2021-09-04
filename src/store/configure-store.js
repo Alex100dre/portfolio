@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import rootReducer from '../reducers'
+import rootReducer from './rootReducer'
 
 // const activateEasterEgg = {
 //   type: 'EASTER_EGG_ENABLE',

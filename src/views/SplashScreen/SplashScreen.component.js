@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import animationData from '../../assets/animations/splash-screen'
 import { LogoAnimation, SplashScreenBg } from './SplashScreen.style'
+import {STATUS} from "./SplashScreen.contants";
 
 export default class SplashScreen extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class SplashScreen extends Component {
     this.state = {
       isAnimStopped: false,
       isAnimPaused: false,
-      isActive: true,
+      isActive: props.status === STATUS.TO_DISPLAY,
     }
   }
 
@@ -18,13 +19,13 @@ export default class SplashScreen extends Component {
   }
 
   closeSplashScreen = () => {
-    const { setSplashScreenSeen } = this.props
+    const { setStatus } = this.props
     this.setState({ isActive: false })
-    setSplashScreenSeen()
+    setStatus(STATUS.SEEN)
   }
 
   render() {
-    const { alreadySeen } = this.props
+    const { status } = this.props
     const { isAnimStopped, isAnimPaused, isActive } = this.state
     const { closeSplashScreen } = this
     const defaultOptions = {
@@ -44,7 +45,7 @@ export default class SplashScreen extends Component {
 
     return (
       <div>
-        {!alreadySeen && (
+        {status === STATUS.TO_DISPLAY && (
           <SplashScreenBg isActive={isActive}>
             <LogoAnimation
               options={defaultOptions}
@@ -60,6 +61,6 @@ export default class SplashScreen extends Component {
 }
 
 SplashScreen.propTypes = {
-  alreadySeen: PropTypes.bool.isRequired,
-  setSplashScreenSeen: PropTypes.func.isRequired,
+  status: PropTypes.string,
+  setStatus: PropTypes.func.isRequired,
 }
