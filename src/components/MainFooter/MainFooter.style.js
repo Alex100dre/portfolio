@@ -14,4 +14,9 @@ export const SubFooter = styled.div`
   background-color:#000;
   color: #fff;
   padding: 40px 0;
+  text-align: center;
+  
+  & .easter {
+    cursor: pointer;
+  }
 `

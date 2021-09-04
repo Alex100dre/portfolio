@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import { Container } from 'react-grid-system'
 
-import routes from '../../constants/routes'
 import { Footer, PreFooter, SubFooter } from './MainFooter.style'
-import Button from '../commons/Button/Button.component'
-
 
 export default class MainFooter extends Component {
   eEggClick = () => {
@@ -24,10 +20,7 @@ export default class MainFooter extends Component {
           </PreFooter>
           <SubFooter>
             <Container>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consectetur ducimus, ea eligendi expedita fuga impedit necessitatibus nemo officia perspiciatis porro praesentium quidem quis repellendus sequi, sint sit veritatis voluptates?</p>
-              <Button types={['primary', 'shadow']} onClick={this.eEggClick}>
-                <span role="img" aria-label="emoji chut">🤫</span>Ne clique pas<span role="img" aria-label="emoji mensonge">&nbsp;🤥</span>
-              </Button>
+              <p className="easter" onClick={this.eEggClick}>"Si notre cerveau était suffisamment simple pour que nous le comprenions, nous serions si simples d'esprit que nous ne le comprendrions pas."<br />Lyall Watson</p>
             </Container>
           </SubFooter>
         </Footer>
