@@ -3,7 +3,7 @@ import Lottie from 'react-lottie'
 
 export const SplashScreenBg = styled.div`
   background-color:#000;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
