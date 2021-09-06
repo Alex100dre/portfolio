@@ -1,4 +1,5 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import rootReducer from './rootReducer'
 
 // const activateEasterEgg = {
@@ -11,7 +12,7 @@ export default function configureStore() {
   /* eslint-disable no-underscore-dangle */
   const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(thunk),
   )
   /* eslint-enable */
 

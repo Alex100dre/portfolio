@@ -1,55 +1,55 @@
-import React, { Component } from 'react'
-import * as firebase from 'firebase'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Grid from '../../../../components/commons/Grid'
 import ProjectCard from './ProjectCard'
-import Section, { SectionTitle, SectionLoader } from '../../../../components/commons/Section'
+import Section, { SectionLoader, SectionTitle } from '../../../../components/commons/Section'
 
 
-export default class Projects extends Component {
-  constructor() {
-    super()
+const Projects = ({
+  fetchProjects, loading, error, list,
+}) => {
+  useEffect(() => {
+    fetchProjects()
+  }, [])
 
-    this.state = {
-      projects: [],
-      loading: true,
-    }
-  }
+  const projectsDOM = list.map((project, index) => (
+    <ProjectCard key={project.name} project={project} index={index} />
+  ))
+  const ErrorDOM = ({ message }) => (
+    <p>
+      error :
+      {message}
+    </p>
+  )
+  return (
+    <Section>
+      <SectionTitle>Projets</SectionTitle>
 
-  componentWillMount() {
-    const ref = firebase.database().ref('projects')
+      {loading && (<SectionLoader size={80} />)}
 
-    ref.on('value', (snapshot) => {
-      this.setState({
-        projects: snapshot.val(),
-        loading: false,
-      })
-    }, (error) => {
-      console.log(`Error while getting data from firebase database:\n  ${error}`)
-    })
-  }
-
-  render() {
-    const { projects, loading } = this.state
-
-    const projectsDOM = projects.map((project, index) => (
-      <ProjectCard key={project.name} project={project} index={index} />
-    ))
-
-    return (
-      <Section>
-        <SectionTitle>Projets</SectionTitle>
-
-        {loading && (<SectionLoader size={80} />)}
-
-        <div>
-          <Grid cols={{
-            xs: 1, sm: 2, md: 4, lg: 4,
-          }}
-          >
-            {!loading && [projectsDOM]}
-          </Grid>
-        </div>
-      </Section>
-    )
-  }
+      <div>
+        <Grid cols={{
+          xs: 1, sm: 2, md: 4, lg: 4,
+        }}
+        >
+          {!loading && list && list.length > 0 && [projectsDOM]}
+          {!loading && error && <ErrorDOM message={error.message} />}
+        </Grid>
+      </div>
+    </Section>
+  )
 }
+
+Projects.propTypes = {
+  fetchProjects: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.shape(),
+  list: PropTypes.arrayOf(PropTypes.shape()),
+}
+
+Projects.defaultProps = {
+  error: null,
+  list: [],
+}
+
+export default Projects

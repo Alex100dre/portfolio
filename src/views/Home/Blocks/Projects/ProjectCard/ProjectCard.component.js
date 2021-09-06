@@ -1,36 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Dotdotdot from 'react-dotdotdot'
 import Fade from 'react-reveal/Fade'
 
-import {
-  CardMedia, CardContent, CardTitle,
-} from '../../../../../components/commons/Card'
+import APIS from '../../../../../constants/apis'
+import { CardContent, CardMedia, CardTitle } from '../../../../../components/commons/Card'
 
 import { PrjCard, PrjLink } from './ProjectCard.style'
 
-export default class ProjectCard extends Component {
-  render() {
-    const { project, index } = this.props
-    const delay = index * 200
+const ProjectCard = ({ project, index }) => {
+  const delay = index * 200
+  const thumbnailUrl = project.thumbnail.formats.small
+    ? `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.formats.small.url}`
+    : `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.url}`
 
-    return (
-      <Fade bottom delay={delay} distance="30px">
-        <PrjCard>
-          <PrjLink to={`/project/${index}/${encodeURIComponent(project.name)}`}>
-            <CardMedia image={project.thumbnail} title={project.name} />
-            <CardContent>
-              <CardTitle>{ project.name }</CardTitle>
-              {/* <p>{project.summary}</p> */}
-              <Dotdotdot clamp={3}>
-                { project.summary }
-              </Dotdotdot>
-            </CardContent>
-          </PrjLink>
-        </PrjCard>
-      </Fade>
-    )
-  }
+  return (
+    <Fade bottom delay={delay} distance="30px">
+      <PrjCard>
+        <PrjLink to={`/project/${index}/${encodeURIComponent(project.name)}`}>
+          <CardMedia image={thumbnailUrl} title={project.name} />
+          <CardContent>
+            <CardTitle>{project.name}</CardTitle>
+            <Dotdotdot clamp={3}>
+              {project.summary}
+            </Dotdotdot>
+          </CardContent>
+        </PrjLink>
+      </PrjCard>
+    </Fade>
+  )
 }
 
 ProjectCard.propTypes = {
@@ -40,3 +38,5 @@ ProjectCard.propTypes = {
     summary: PropTypes.string.isRequired,
   }).isRequired,
 }
+
+export default ProjectCard
