@@ -16,8 +16,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
-    "module": "esnext"
+    "jsx": "react",
+    "module": "esnext",
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"

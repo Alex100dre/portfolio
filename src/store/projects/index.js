@@ -8,5 +8,6 @@ export {
 } from './projects.actions'
 export {
   fetchProjects,
-} from './projects.effect'
+} from './projects.effects'
+export { selectProject } from './projects.selectors'
 export default reducer
