@@ -4,7 +4,7 @@ import { fetchProjects } from '../../../../store/projects'
 
 
 const mapStateToProps = ({ projects }) => ({
-  ...projects,
+  ...projects.list,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -15,27 +15,57 @@ import { ProjectLinkContainer, Thumbnail } from './project.style'
 import Grid from '../../components/commons/Grid'
 import { selectProject } from '../../store/projects'
 
-const Project = ({ match, history }) => {
-  const [loading, setLoading] = useState(true)
+const Project = ({ match, history, fetchOneProject, data:fetchedProject }) => {
+  const [loading, setLoading] = useState(false)
   const [projectId, setProjectId] = useState(match.params.projectId)
   const foundProject = useSelector(state => selectProject(state, projectId))
   const [project, setProject] = useState(null)
   const [thumbnail, setThumbnail] = useState(null)
 
   useEffect(() => {
+      if (foundProject || !fetchedProject) {
+        return
+      }
+      console.log('SET FETCHED PROJECT')
+      setProject(fetchedProject)
+    }
+  , [fetchedProject])
+
+  useEffect(() => {
+    if(!foundProject) {
+      return
+    }
+    setLoading(true)
     setProject(foundProject)
   }, [foundProject])
 
+  useEffect(() => {
+    console.log('project', project)
+    if (project && project.id) {
+      setLoading(false)
+    }
+    console.log('loading', loading)
+    if (loading) {
+      return
+    }
+    if ((!project && !foundProject) || (project && !project.id && !foundProject)) {
+      console.log('FETCH PROJECT')
+      fetchOneProject(projectId)
+      setLoading(true);
+    }
+  }, [project])
 
   useEffect(() => {
-    if (!project || !project.id) return
+    if (loading || !project || !project.id) {
+      return
+    }
 
-    const newThumbnail = project && project.thumbnail.formats.large
+    const newThumbnail = project.thumbnail.formats.large
       ? `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.formats.large.url}`
       : `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.url}`
+    console.log('newThumbnail', newThumbnail)
     setThumbnail(newThumbnail)
-    setLoading(false)
-  }, [project])
+  }, [loading])
 
   return (
     <div>
@@ -49,7 +79,7 @@ const Project = ({ match, history }) => {
           <Section data-prjid={projectId}>
             <Paper overlapTop>
               {loading && (<SectionLoader size={80} />)}
-              {!loading && (
+              {!loading && project && project.id && (
                 <div>
                   <SectionTitle>{project.name}</SectionTitle>
                   <Content>

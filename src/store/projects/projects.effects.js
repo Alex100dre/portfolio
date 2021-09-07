@@ -4,6 +4,9 @@ import {
   fetchProjectsStart,
   fetchProjectsSuccess,
   fetchProjectsFail,
+  fetchOneProjectFail,
+  fetchOneProjectStart,
+  fetchOneProjectSuccess
 } from '.'
 
 export const fetchProjects = () => (dispatch) => {
@@ -15,5 +18,17 @@ export const fetchProjects = () => (dispatch) => {
     })
     .catch((error) => {
       dispatch(fetchProjectsFail(error))
+    })
+}
+
+export const fetchOneProject = (projectId) => (dispatch) => {
+  dispatch(fetchOneProjectStart())
+  // TODO: manage locale
+  axios.get(`${APIS.PORTFOLIO_SERVER.DOMAIN}${APIS.PORTFOLIO_SERVER.ENDPOINTS.PROJECTS}/${projectId}`)
+    .then((res) => {
+      dispatch(fetchOneProjectSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(fetchOneProjectFail(error))
     })
 }

@@ -17,3 +17,21 @@ export const fetchProjectsFail = error => (
     payload: error,
   }
 )
+
+export const fetchOneProjectStart = () => (
+  { type: projectsTypes.PROJECTS_FETCH_ONE_START }
+)
+
+export const fetchOneProjectSuccess = project => (
+  {
+    type: projectsTypes.PROJECTS_FETCH_ONE_SUCCESS,
+    payload: project,
+  }
+)
+
+export const fetchOneProjectFail = error =>  (
+  {
+    type: projectsTypes.PROJECTS_FETCH_ONE_FAIL,
+    payload: error,
+  }
+)

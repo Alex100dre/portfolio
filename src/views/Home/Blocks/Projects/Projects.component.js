@@ -6,13 +6,13 @@ import Section, { SectionLoader, SectionTitle } from '../../../../components/com
 
 
 const Projects = ({
-  fetchProjects, loading, error, list,
+  fetchProjects, loading, error, data,
 }) => {
   useEffect(() => {
     fetchProjects()
   }, [])
 
-  const projectsDOM = list.map((project, index) => (
+  const projectsDOM = data.map((project, index) => (
     <ProjectCard key={project.name} project={project} index={index} />
   ))
   const ErrorDOM = ({ message }) => (
@@ -32,7 +32,7 @@ const Projects = ({
           xs: 1, sm: 2, md: 4, lg: 4,
         }}
         >
-          {!loading && list && list.length > 0 && [projectsDOM]}
+          {!loading && data && data.length > 0 && [projectsDOM]}
           {!loading && error && <ErrorDOM message={error.message} />}
         </Grid>
       </div>
@@ -44,12 +44,12 @@ Projects.propTypes = {
   fetchProjects: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.shape(),
-  list: PropTypes.arrayOf(PropTypes.shape()),
+  data: PropTypes.arrayOf(PropTypes.shape()),
 }
 
 Projects.defaultProps = {
   error: null,
-  list: [],
+  data: [],
 }
 
 export default Projects
