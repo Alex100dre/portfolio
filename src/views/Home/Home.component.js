@@ -22,7 +22,8 @@ export default class Home extends Component {
             <About />
           </ScrollableAnchor>
           <ScrollableAnchor id="projects">
-            <Projects />
+            {/* div is here to dirty fix anchor conflict with memo TODO: find a better way => https://github.com/gabergg/react-scrollable-anchor/issues/43 */}
+            <div><Projects /></div>
           </ScrollableAnchor>
         </Container>
         <ScrollableAnchor id="contact">
