@@ -1,17 +1,14 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
 import rootReducer from './rootReducer'
 
-// const activateEasterEgg = {
-//   type: 'EASTER_EGG_ENABLE',
-//   payload: 'easterEgg',
-// }
-
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export default function configureStore() {
   /* eslint-disable no-underscore-dangle */
   const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    composeEnhancers(applyMiddleware(thunk)),
   )
   /* eslint-enable */
 

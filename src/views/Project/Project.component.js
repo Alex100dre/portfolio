@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Container } from 'react-grid-system'
 import Fade from 'react-reveal/Fade'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
-import * as firebase from 'firebase'
+import APIS from '../../constants/apis'
 import Section, { SectionLoader } from '../../components/commons/Section/Section.component'
 import Paper from '../../components/commons/Paper'
 import { SectionTitle } from '../../components/commons/Section'
@@ -12,79 +13,98 @@ import Header from '../../components/commons/Header'
 import Button from '../../components/commons/Button'
 import { ProjectLinkContainer, Thumbnail } from './project.style'
 import Grid from '../../components/commons/Grid'
+import { selectProject } from '../../store/projects'
 
-export default class Project extends Component {
-  constructor() {
-    super()
-    this.state = {
-      project: null,
-      loading: true,
+const Project = ({ match, history, fetchOneProject, data:fetchedProject }) => {
+  const [loading, setLoading] = useState(false)
+  const [projectId, setProjectId] = useState(match.params.projectId)
+  const foundProject = useSelector(state => selectProject(state, projectId))
+  const [project, setProject] = useState(null)
+  const [thumbnail, setThumbnail] = useState(null)
+
+  useEffect(() => {
+      if (foundProject || !fetchedProject) {
+        return
+      }
+      console.log('SET FETCHED PROJECT')
+      setProject(fetchedProject)
     }
-  }
+  , [fetchedProject])
 
-  componentDidMount() {
-    const { props } = this
-    const { projectId } = props.match.params
-    const ref = firebase.database().ref(`projects/${projectId}`)
+  useEffect(() => {
+    if(!foundProject) {
+      return
+    }
+    setLoading(true)
+    setProject(foundProject)
+  }, [foundProject])
 
-    ref.on('value', (snapshot) => {
-      this.setState({
-        project: snapshot.val(),
-        loading: false,
-      })
-    }, (error) => {
-      console.log(`Error while getting data from firebase database:\n  ${error}`)
-    })
-  }
+  useEffect(() => {
+    console.log('project', project)
+    if (project && project.id) {
+      setLoading(false)
+    }
+    console.log('loading', loading)
+    if (loading) {
+      return
+    }
+    if ((!project && !foundProject) || (project && !project.id && !foundProject)) {
+      console.log('FETCH PROJECT')
+      fetchOneProject(projectId)
+      setLoading(true);
+    }
+  }, [project])
 
+  useEffect(() => {
+    if (loading || !project || !project.id) {
+      return
+    }
 
-  render() {
-    const { props, state } = this
-    const notLoadedProject = props.project
+    const newThumbnail = project.thumbnail.formats.large
+      ? `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.formats.large.url}`
+      : `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.url}`
+    console.log('newThumbnail', newThumbnail)
+    setThumbnail(newThumbnail)
+  }, [loading])
 
-    const project = state.project ? state.project : notLoadedProject
-
-    const { loading } = this.state
-
-    return (
-      <div>
-        <Header bgImage={project.thumbnail} blur>
-          <Container>
-            <Button onClick={props.history.goBack}>← Retour</Button>
-          </Container>
-        </Header>
+  return (
+    <div>
+      <Header bgImage={thumbnail} bgColor="#191A1D" blur>
         <Container>
-          <Fade bottom distance="100px">
-            <Section data-prjid={project.id}>
-              <Paper overlapTop>
-                {loading && (<SectionLoader size={80} />)}
-                {!loading && (
-                  <div>
-                    <SectionTitle>{project.name}</SectionTitle>
-                    <Content>
-                      <Grid cols={{
-                        xs: 1, sm: 1, md: 2, lg: 2,
-                      }}
-                      >
-                        {project.summary}
-                        <Thumbnail src={project.thumbnail} alt={project.name} />
-                      </Grid>
-
-                    </Content>
-                    {project.link && (
-                      <ProjectLinkContainer>
-                        <Button href={project.link}>Consulter</Button>
-                      </ProjectLinkContainer>
-                    )}
-                  </div>
-                )}
-              </Paper>
-            </Section>
-          </Fade>
+          <Button onClick={history.goBack}>← Retour</Button>
         </Container>
-      </div>
-    )
-  }
+      </Header>
+      <Container>
+        <Fade bottom distance="100px">
+          <Section data-prjid={projectId}>
+            <Paper overlapTop>
+              {loading && (<SectionLoader size={80} />)}
+              {!loading && project && project.id && (
+                <div>
+                  <SectionTitle>{project.name}</SectionTitle>
+                  <Content>
+                    <Grid cols={{
+                      xs: 1, sm: 1, md: 2, lg: 2,
+                    }}
+                    >
+                      <div><ReactMarkdown children={project.description} /></div>
+                      <Thumbnail src={thumbnail} alt={project.name} />
+                    </Grid>
+
+                  </Content>
+                  {project.link && (
+                    <ProjectLinkContainer>
+                      <Button href={project.link}>Consulter</Button>
+                    </ProjectLinkContainer>
+                  )}
+                </div>
+              )}
+            </Paper>
+          </Section>
+        </Fade>
+      </Container>
+    </div>
+  )
 }
 
 Project.propTypes = {
@@ -114,3 +134,5 @@ Project.defaultProps = {
     loading: false,
   },
 }
+
+export default Project
