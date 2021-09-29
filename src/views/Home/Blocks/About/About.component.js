@@ -7,27 +7,12 @@ import portaitImg from '../../../../assets/images/avatar.jpg'
 import Section, { SectionTitle } from '../../../../components/commons/Section'
 
 export default class About extends Component {
-  // constructor() {
-  //   super()
-  //
-  //   this.state = {
-  //     projects: null,
-  //     loading: true,
-  //   }
-  // }
-  //
-  // componentWillMount() {
-  //   const ref = firebase.database().ref('projects')
-  //
-  //   ref.on('value', (snapshot) => {
-  //     this.setState({
-  //       projects: snapshot.val(),
-  //       loading: false,
-  //     })
-  //   }, (error) => {
-  //     console.log(`Error while getting data from firebase database:\n  ${error}`)
-  //   })
-  // }
+  getYearsOfWork = () => {
+    const firstJobYear = 2014;
+    const thisYear = new Date().getFullYear();
+
+    return thisYear - firstJobYear;
+  }
 
   render() {
     // const { projects, loading } = this.state
@@ -77,7 +62,7 @@ via la stack
               <p>
                 Fort de
                 {' '}
-                <strong>4 années d'expérience</strong>
+                <strong>{this.getYearsOfWork()} années d'expérience</strong>
                 {' '}
 en tant que
                 {' '}
@@ -114,10 +99,6 @@ alias
               </p>
               <p>
                 En effet, je pourrais tout aussi bien rester à Paris que partir vivre à l'autre bout du monde. Qui sait ?
-              </p>
-              <p>
-                Une chose est sûre cependant, n'aimant pas spécialement le changement, il y a peu de chances que je me lance dans
-                une reconversion profesionnelle du jour au lendemain.
               </p>
             </Content>
           </Paper>
