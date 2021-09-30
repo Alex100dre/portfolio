@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Dotdotdot from 'react-dotdotdot'
 import Fade from 'react-reveal/Fade'
 
-import APIS from '../../../../../constants/apis'
 import { CardContent, CardMedia, CardTitle } from '../../../../../components/commons/Card'
 
 import { PrjCard, PrjLink } from './ProjectCard.style'
@@ -11,8 +10,8 @@ import { PrjCard, PrjLink } from './ProjectCard.style'
 const ProjectCard = ({ project, index }) => {
   const delay = index * 200
   const thumbnailUrl = project.thumbnail.formats.small
-    ? `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.formats.small.url}`
-    : `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.url}`
+    ? project.thumbnail.formats.small.url
+    : project.thumbnail.url
 
   return (
     <Fade bottom delay={delay} distance="30px">

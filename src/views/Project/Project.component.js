@@ -61,8 +61,8 @@ const Project = ({ match, history, fetchOneProject, data:fetchedProject }) => {
     }
 
     const newThumbnail = project.thumbnail.formats.large
-      ? `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.formats.large.url}`
-      : `${APIS.PORTFOLIO_SERVER.DOMAIN}${project.thumbnail.url}`
+      ? project.thumbnail.formats.large.url
+      : project.thumbnail.url
     console.log('newThumbnail', newThumbnail)
     setThumbnail(newThumbnail)
   }, [loading])
