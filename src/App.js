@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { configureAnchors } from 'react-scrollable-anchor'
-
-// import logo from './logo.svg';
-// import './App.css';
 import routes from './constants/routes'
 import Home from './views/Home'
 import Project from './views/Project'
@@ -13,6 +10,7 @@ import MessagePanel from './components/commons/MessagePanel'
 
 
 class App extends Component {
+
   componentDidMount() {
     configureAnchors({ offset: -130 })
   }

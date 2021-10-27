@@ -4,7 +4,6 @@ import { Container } from 'react-grid-system'
 import Fade from 'react-reveal/Fade'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
-import APIS from '../../constants/apis'
 import Section, { SectionLoader } from '../../components/commons/Section/Section.component'
 import Paper from '../../components/commons/Paper'
 import { SectionTitle } from '../../components/commons/Section'
@@ -14,6 +13,7 @@ import Button from '../../components/commons/Button'
 import { ProjectLinkContainer, Thumbnail } from './project.style'
 import Grid from '../../components/commons/Grid'
 import { selectProject } from '../../store/projects'
+import Technologies from "./Blocks/Technologies";
 
 const Project = ({ match, history, fetchOneProject, data:fetchedProject }) => {
   const [loading, setLoading] = useState(false)
@@ -87,7 +87,10 @@ const Project = ({ match, history, fetchOneProject, data:fetchedProject }) => {
                       xs: 1, sm: 1, md: 2, lg: 2,
                     }}
                     >
-                      <div><ReactMarkdown children={project.description} /></div>
+                      <div>
+                        <Technologies list={project.technologies} />
+                        <ReactMarkdown children={project.description} />
+                      </div>
                       <Thumbnail src={thumbnail} alt={project.name} />
                     </Grid>
 
@@ -116,6 +119,7 @@ Project.propTypes = {
     thumbnail: PropTypes.string,
     link: PropTypes.string,
     loading: PropTypes.bool.isRequired,
+    technologies: PropTypes.array,
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({
