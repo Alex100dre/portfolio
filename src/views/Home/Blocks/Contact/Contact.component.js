@@ -98,7 +98,9 @@ export default class Contact extends Component {
   }
 
   handleSubmit = (e) => {
+    const { fields } = this.state.form;
     e.preventDefault()
+    window.location.href = `mailto:alexandre@le-dev.com?subject=Email portfolio le-dev.com&body=------------- Expediteur -------------%0AAdresse email : ${fields.email.value}%0ANom : ${encodeURIComponent(fields.lastname.value)}%0APrénom : ${encodeURIComponent(fields.firstname.value)}%0A%0A------------- Message -------------%0A${encodeURIComponent(fields.message.value)}`;
     this.setFormStatusSending()
     setTimeout(() => { this.setFormStatusSent() }, 3000);
   }
