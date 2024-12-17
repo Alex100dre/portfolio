@@ -16,7 +16,7 @@ const ProjectCard = ({ project, index }) => {
   return (
     <Fade bottom delay={delay} distance="30px">
       <PrjCard>
-        <PrjLink to={`/project/${project.id}/${encodeURIComponent(project.name)}`}>
+        <PrjLink to={`/project/${project.documentId}/${encodeURIComponent(project.name)}`}>
           <CardMedia image={thumbnailUrl} title={project.name} />
           <CardContent>
             <CardTitle>{project.name}</CardTitle>

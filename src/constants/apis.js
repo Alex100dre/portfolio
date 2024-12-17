@@ -1,6 +1,6 @@
 export default {
   PORTFOLIO_SERVER: {
-    DOMAIN: 'https://portfolio-back.le-dev.com',
+    DOMAIN: 'https://portfolio.le-dev.com/api',
     ENDPOINTS: {
       PROJECTS: '/projects'
     },
