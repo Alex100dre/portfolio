@@ -2,6 +2,9 @@ import styled from 'styled-components'
 
 export const Content = styled.div`
   text-align: justify;
+  & img {
+      max-width: 100%;
+  }
 `
 
 export const PortraitImage = styled.img`
