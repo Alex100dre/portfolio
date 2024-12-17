@@ -1,109 +1,69 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Fade from 'react-reveal/Fade'
 import Paper from '../../../../components/commons/Paper'
-import { Content, PortraitImage } from './About.style'
+import {Content, PortraitImage} from './About.style'
 import portaitImg from '../../../../assets/images/avatar.jpg'
-import Section, { SectionTitle } from '../../../../components/commons/Section'
+import Section, {SectionTitle} from '../../../../components/commons/Section'
 
 export default class About extends Component {
-  getYearsOfWork = () => {
-    const firstJobYear = 2014;
-    const thisYear = new Date().getFullYear();
+    getYearsOfWork = () => {
+        const firstJobYear = 2014;
+        const thisYear = new Date().getFullYear();
 
-    return thisYear - firstJobYear;
-  }
+        return thisYear - firstJobYear;
+    }
 
-  render() {
-    // const { projects, loading } = this.state
+    render() {
+        // const { projects, loading } = this.state
 
-    // if (loading) return <h1>CHARGEMENT EN COURS...</h1>
+        // if (loading) return <h1>CHARGEMENT EN COURS...</h1>
 
-    return (
-      <Fade bottom distance="100px">
-        <Section>
-          <Paper overlapTop>
-            <SectionTitle>À propos</SectionTitle>
-            <Content>
-              <PortraitImage src={portaitImg} alt="Alexandre Hachim" />
-              <p>
-                Qui suis-je ? Que fais-je ? Où vais-je ?
-                C'est pour tenter de répondre à ces questions, assez redondantes, en fait, que j'écris ce magnifique pavé.
-              </p>
+        return (
+            <Fade bottom distance="100px">
+                <Section>
+                    <Paper overlapTop>
+                        <SectionTitle>À propos</SectionTitle>
+                        <Content>
+                            <PortraitImage src={portaitImg} alt="Alexandre Hachim"/>
 
-              <p>
-                Ayant grandi dans la fabuleuse époque des 90's et ayant connu les vestes fluo, le club Dorothée,
-                les jojos, les pogs, les walkmans, la game boy et j'en passe.
-                Mais ayant surtout connu la vie
-                {' '}
-                <abbr title="avant internet">ante-internet</abbr>
-,
-                c'est après quelques années d'études supérieures que je me suis lancé dans le
-                {' '}
-                <strong>développement web</strong>
-.
-              </p>
+                            <p>Je suis <strong>développeur web fullstack</strong> résidant en région parisienne
+                                spécialisé
+                                en <strong>JavaScript</strong>/<strong>TypeScript</strong> (<strong>React</strong>/<strong>Node.js</strong>).
+                                Passionné par le <strong>développement
+                                    web</strong> et la création d'expériences utilisateur de qualité. </p>
+                            <p>Fort de <strong>{this.getYearsOfWork()} années d'expérience</strong>, j'ai acquis une
+                                solide
+                                expertise dans l'écosystème JavaScript.</p>
 
-              <p>
-                En effet, je m'y découvre rapidement une vocation et en ai fait aujourd'hui mon métier.
-              </p>
-              <p>
-                Ayant appréhendé plusieurs langages (PHP, C# Unity VR, etc...), je me concentre à présent sur
-                le
-                {' '}
-                <strong>Javascript</strong>
-                {' '}
-via la stack
-                {' '}
-                <strong>React/Redux/Node</strong>
-...
-              </p>
+                            <p>
+                                J'ai eu l'opportunité de collaborer sur des projets pour de grands comptes parmis lesquels je peux citer,
+                                mk2, Mazars, le Crédit Agricole, Nexity, la Société Générale, ou encore le Ministère de
+                                l'Intérieur.
+                            </p>
 
-              <p>
-                Fort de
-                {' '}
-                <strong>{this.getYearsOfWork()} années d'expérience</strong>
-                {' '}
-en tant que
-                {' '}
-                <strong>développeur web</strong>
-, je suis
-                actuellement en mission à la Société Générale pour le compte de BeNext en tant
-                qu'
-                <strong>ingénieur d'études</strong>
-                {' '}
-alias
-                {' '}
-                <strong>développeur web fullstack JS</strong>
-.
-              </p>
+                            <p>
+                                J'ai pu explorer tous les aspects du développement web (front et back), de la conception à la mise en production,
+                                en passant par la maintenance et l'optimisation de performances.
+                            </p>
 
-              <p>
-                Vie professionelle mise à part, je suis un grand amateur de jeux vidéo, science-fiction, voyage, dessin, sport,
-                actualité tech et spatiale, livre audio (#audible), culture nippone, mais aussi de drone et plus globalement de vidéo.
-                <br />
-                J'ai d'ailleurs, bien qu'étant novice dans le domaine, créé une chaine youtube dédié à cette dernière
-                passion que vous pouvez consulter en
-                {' '}
-                <a href="https://www.youtube.com/channel/UCD2nU6-sTxDiacobzEtwyZw">cliquant ici</a>
-              </p>
+                            <p>J'accorde une grande importance à la <strong>collaboration</strong> et au <strong>partage
+                                de
+                                connaissances</strong>, que ce soit au sein d'une équipe de développement ou à travers
+                                des
+                                initiatives communautaires. </p>
 
-              <p>
-                Je visionne d'ailleurs pas mal de vidéos sur YouTube et des chaînes telles que celles d'e-penser, dirty-biology,
-                science étonnante ou encore pause process me divertissent énormément.
-              </p>
+                            <p>Toujours curieux et en quête d'amélioration continue, je m'efforce de
+                                trouver un équilibre entre les besoins des clients et la qualité du code.</p>
 
-              <p>
-                Concernant le futur, c'est un exercice assez périlleux que d'essayer de se projeter dans l'avenir et il
-                n'est pas non plus des plus plaisant de s'imaginer vieillir.
-              </p>
-              <p>
-                En effet, je pourrais tout aussi bien rester à Paris que partir vivre à l'autre bout du monde. Qui sait ?
-              </p>
-            </Content>
-          </Paper>
-        </Section>
-      </Fade>
-    )
-  }
+                            <p>Ma plus grande satisfaction est de voir des utilisateurs bénéficier directement de solutions que j’ai aidé à concevoir.</p>
+
+                            <p>Si vous cherchez un <strong>développeur passionné</strong> par les <strong>technologies
+                                web</strong>, n'hésitez pas à me contacter.</p>
+                        </Content>
+                    </Paper>
+                </Section>
+            </Fade>
+        )
+    }
 }
